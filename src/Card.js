@@ -1,5 +1,5 @@
 import React from "react";
-import { choice } from "./helpers";
+
 
 class Card extends React.Component {
   state = {

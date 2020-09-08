@@ -3,11 +3,27 @@ import axios from "axios";
 import Card from "./Card";
 
 export default class Background extends Component {
-  state = {
-    people: [],
-  };
+  constructor(props) {
+    super(props);
 
-  async componentDidMount() {
+    this.state = {
+      people: [],
+    };
+    this.handleRerender = this.handleRerender.bind(this);
+  }
+
+   async componentDidMount() {
+    let data = await axios
+      .get(`https://randomuser.me/api/?results=9`)
+      .catch((error) => {
+        alert("Error ========> Fetching Failed", error);
+      });
+    this.setState({
+      people: data.data.results,
+    });
+  }
+
+  async handleRerender() {
     let data = await axios
       .get(`https://randomuser.me/api/?results=9`)
       .catch((error) => {
@@ -34,7 +50,7 @@ export default class Background extends Component {
     return (
       <>
         <h1>Leads</h1>
-        <button>get new leads</button>
+        <button onClick={this.handleRerender}>get new leads</button>
         <div className="container">{people}</div>
       </>
     );
