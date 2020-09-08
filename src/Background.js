@@ -12,11 +12,12 @@ export default class Background extends Component {
     this.handleRerender = this.handleRerender.bind(this);
   }
 
-   async componentDidMount() {
+  async componentDidMount() {
     let data = await axios
       .get(`https://randomuser.me/api/?results=9`)
       .catch((error) => {
         alert("Error ========> Fetching Failed", error);
+        return
       });
     this.setState({
       people: data.data.results,
@@ -27,7 +28,7 @@ export default class Background extends Component {
     let data = await axios
       .get(`https://randomuser.me/api/?results=9`)
       .catch((error) => {
-        alert("Error ========> Fetching Failed", error);
+        alert("Error ========> Fetching Failed Please reload page", error);
       });
     this.setState({
       people: data.data.results,
