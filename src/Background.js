@@ -17,9 +17,7 @@ export default class Background extends Component {
       .get(`https://randomuser.me/api/?results=9`)
       .catch((error) => {
         alert("Error ========> Fetching Failed Please reload page", error);
-        if (error) {
-          this.handleRerender();
-        }
+        this.handleRerender();
       });
 
     this.setState({
@@ -32,9 +30,7 @@ export default class Background extends Component {
       .get(`https://randomuser.me/api/?results=9`)
       .catch((error) => {
         alert("Error ========> Fetching Failed", error);
-        if (error) {
-          this.handleRerender();
-        }
+        this.handleRerender();
       });
 
     this.setState({
@@ -50,18 +46,20 @@ export default class Background extends Component {
           name={`${person.name.first}  ${person.name.last}`}
           email={person.email}
           phone={person.phone}
+          company={person.location.city}
         />
       );
     });
 
-    console.log(people);
+    console.log(this.state.people);
     return (
       <>
-        <h1 className="title">XpressLeads</h1>
-        <div className="btn">
-          <button onClick={this.handleRerender}>get new leads</button>
+        <div className='top'>
+          <h1 className="title">XpressLeads</h1>
+          <div className="btn">
+            <button onClick={this.handleRerender}>Get new leads</button>
+          </div>
         </div>
-
         <div className="container">{people}</div>
       </>
     );

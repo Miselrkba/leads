@@ -1,6 +1,8 @@
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+
+
 class Card extends React.Component {
   state = {
     isEmailed: false,
@@ -35,7 +37,7 @@ class Card extends React.Component {
   };
 
   render() {
-    const copied = <span>Phone number copied to clipboard</span>;
+    // const copied = <span>Phone number copied to clipboard</span>;
     const success = this.state.selectValue === "success";
     const fail = this.state.selectValue === "fail";
     const callback = this.state.selectValue === "callback";
@@ -54,6 +56,7 @@ class Card extends React.Component {
         }
       >
         <div className="outcome">
+          <ion-icon name="podium-outline"></ion-icon>
           <label htmlFor="outcome">Outcome {"  "}</label>
           <select name="outcome" onChange={this.handleDropdownChange}>
             <option value="open">open</option>
@@ -62,31 +65,45 @@ class Card extends React.Component {
             <option value="callback">callback </option>
           </select>
         </div>
-        <p>Name: {this.props.name}</p>
-        <span>
+        <h4>
+          <ion-icon name="people-circle-outline"></ion-icon>Name:{" "}
+          {this.props.name}
+        </h4>
+        <h4>
+          <ion-icon name="business-outline"></ion-icon>
+          Company: {this.props.company}
+        </h4>
+        <h4>
+          <ion-icon name="mail-outline"></ion-icon>
           Email: {"  "}
-          <a href={`mailto:${this.props.email}`}>{this.props.email}</a>
-        </span>
-        <input
-          type="checkbox"
-          checked={this.state.isEmailed}
-          onChange={this.handleIsEmailedChange}
-        />
-        emailed
-        <br />
-        <span className='bigger'>Number: {this.props.phone}</span>
-        <CopyToClipboard text={this.props.phone}>
-          <button onClick={this.handleCopy}>
+          <a className="link" href={`mailto:${this.props.email}`}>
+            {this.props.email}
+          </a>
+          <input
+            type="checkbox"
+            checked={this.state.isEmailed}
+            onChange={this.handleIsEmailedChange}
+          />
+          emailed
+        </h4>
+        
+        <h4 className='number'>
+          <ion-icon name="call-outline"></ion-icon>Number: {this.props.phone}
+          <input
+            type="checkbox"
+            checked={this.state.isCalled}
+            onChange={this.handleIsCalledChange}
+          />
+          called
+          <CopyToClipboard text={this.props.phone}>
+          <button className='copy-btn' onClick={this.handleCopy}>
             {this.state.copied ? "copied" : "copy"}
           </button>
         </CopyToClipboard>
-        <input
-          type="checkbox"
-          checked={this.state.isCalled}
-          onChange={this.handleIsCalledChange}
-        />
-        called
-        <p className="alert">{this.state.copied ? copied : null}</p>
+        </h4>
+        
+
+        {/* <p className="alert">{this.state.copied ? copied : null}</p> */}
       </div>
     );
   }
