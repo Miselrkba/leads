@@ -18,20 +18,84 @@
   padding: 1em;
 }
 
-.success{
-  background-color: gold
+.success {
+  background-color: gold;
+
+  animation-name: fade-out;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
-.fail{
-  background-color: red
+.fail {
+  background-color: red;
+  animation-name: fade-out;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
-.callback{
-  background-color: orange
+.callback {
+  background-color: orange;
 }
 
 .alert {
-  color: yellow;
+  color: black;
 }
 
 .outcome {
   text-align: right;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
+
+}
+
+/* ***************************Testing */
+
+.bigger {
+  color: rgb(8, 8, 184);
+  font-size: 15px;
+  transition: all 0.5s;
+}
+
+.bigger:hover {
+  color: rgb(53, 59, 59);
+  font-size: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 2em;
+  text-align: center;
+}
+.title:hover {
+  color: #1f93ff;
+  transition: all 1s ease-in-out;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+@keyframes flash {
+  from {
+    color: silver;
+    opacity: 0%;
+  }
+  to {
+    color: black;
+    opacity: 100%;
+  }
+}
+
+@keyframes transform {
+ 100% {transform: rotate(5deg)}
 }

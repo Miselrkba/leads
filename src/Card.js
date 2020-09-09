@@ -52,7 +52,6 @@ class Card extends React.Component {
             ? "box callback"
             : "box"
         }
-        onClick={this.handleClick}
       >
         <div className="outcome">
           <label htmlFor="outcome">Outcome {"  "}</label>
@@ -75,7 +74,7 @@ class Card extends React.Component {
         />
         emailed
         <br />
-        <span>Number: {this.props.phone}</span>
+        <span className='bigger'>Number: {this.props.phone}</span>
         <CopyToClipboard text={this.props.phone}>
           <button onClick={this.handleCopy}>
             {this.state.copied ? "copied" : "copy"}

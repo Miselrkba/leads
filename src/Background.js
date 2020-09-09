@@ -12,24 +12,31 @@ export default class Background extends Component {
     this.handleRerender = this.handleRerender.bind(this);
   }
 
-  async componentDidMount() {
-    let data = await axios
-      .get(`https://randomuser.me/api/?results=9`)
-      .catch((error) => {
-        alert("Error ========> Fetching Failed", error);
-        return
-      });
-    this.setState({
-      people: data.data.results,
-    });
-  }
-
   async handleRerender() {
     let data = await axios
       .get(`https://randomuser.me/api/?results=9`)
       .catch((error) => {
         alert("Error ========> Fetching Failed Please reload page", error);
+        if (error) {
+          this.handleRerender();
+        }
       });
+
+    this.setState({
+      people: data.data.results,
+    });
+  }
+
+  async componentDidMount() {
+    let data = await axios
+      .get(`https://randomuser.me/api/?results=9`)
+      .catch((error) => {
+        alert("Error ========> Fetching Failed", error);
+        if (error) {
+          this.handleRerender();
+        }
+      });
+
     this.setState({
       people: data.data.results,
     });
@@ -50,8 +57,11 @@ export default class Background extends Component {
     console.log(people);
     return (
       <>
-        <h1>Leads</h1>
-        <button onClick={this.handleRerender}>get new leads</button>
+        <h1 className="title">XpressLeads</h1>
+        <div className="btn">
+          <button onClick={this.handleRerender}>get new leads</button>
+        </div>
+
         <div className="container">{people}</div>
       </>
     );
