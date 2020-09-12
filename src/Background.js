@@ -11,10 +11,11 @@ export default class Background extends Component {
       people: [],
       language: "english",
     };
-    this.handleRerender = this.handleRerender.bind(this);
+    this.handleRerender = this.getLeadsButtonClick.bind(this);
+    this.getLeadsData = this.getLeadsData.bind(this);
   }
 
-  async handleRerender() {
+  async getLeadsData() {
     await axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://randomuser.me/api/?results=9`
@@ -30,20 +31,12 @@ export default class Background extends Component {
       });
   }
 
-  async componentDidMount() {
-    await axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://randomuser.me/api/?results=9`
-      )
-      .then((response) => {
-        this.setState({
-          people: response.data.results,
-        });
-      })
-      .catch((error) => {
-        alert("Error ========> Fetching Failed", error);
-        window.location.reload();
-      });
+  getLeadsButtonClick = () => {
+    this.getLeadsData();
+  }
+
+  componentDidMount() {
+    this.getLeadsData();
   }
 
   onLanguageChange = (language) => {
@@ -51,7 +44,6 @@ export default class Background extends Component {
   };
 
   render() {
-   
     const people = this.state.people.map((person) => {
       return (
         <Card
@@ -63,6 +55,9 @@ export default class Background extends Component {
         />
       );
     });
+
+    // let totalCount = people.length;
+    // let successCount = people.drowndownlist.state.success.legth;
 
     return (
       <>
@@ -80,7 +75,7 @@ export default class Background extends Component {
             </span>
             <h1 className="title">XpressLeads</h1>
             <div className="btn">
-              <button onClick={this.handleRerender}>
+              <button onClick={this.getLeadsButtonClick}>
                 {this.state.language === "english"
                   ? "Get new leads"
                   : "Dalšie kontakty"}

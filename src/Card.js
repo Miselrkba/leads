@@ -23,14 +23,40 @@ class Card extends React.Component {
     this.setState({
       selectValue: e.target.value,
     });
+
+    this.recalculateCounts();
   };
 
+  recalculateCounts() {
+    // spocita kazdu categoriu
+    // ulozi to do variables (success....)
+    // call this function on every state change
+    // spocital vsetky actionTalen = success . count()
+    // array DropdownActionsTakenState
+    //  actionsTaken = [];
+    //  actionsTaken.forEach(() => {
+    // lblOpen = card.count(); //14
+    // lblNotOpen =
+    //   lblSuccess = selectValue.success.count(); // on click, add +1 to success
+    //   lblfail = selectValue.fail.count();
+    //  })
+  }
+
   render() {
-    const success = this.state.selectValue === "success";
-    const fail = this.state.selectValue === "fail";
-    const callback = this.state.selectValue === "callback";
+    //put all const into separate file, and import
+    const actionStates = {
+      success: `success`,
+      fail: `fail`,
+      callback: `callback`,
+    };
+
+    const success = this.state.selectValue === actionStates.success; // "success"; // remove magic strings e.g. statesValues.success
+    const fail = this.state.selectValue === actionStates.fail;
+    const callback = this.state.selectValue === actionStates.callback;
+
     const text = this.context === "english" ? "Outcome" : "Výsledok";
     const words = {
+      // create i18n files (e.g. ..app/shared/translations/words.en.const.json)
       name: "Name",
       company: "Company",
       email: "Email",
@@ -42,10 +68,11 @@ class Card extends React.Component {
       fail: "close unsuccessful",
       callback: "callback",
       copy: "copy",
-      copied: "copied",
+      copied: "copied"
     };
 
     const slova = {
+      // create i18n files (e.g. ..app/shared/translations/words.sk.const.json)
       meno: "Meno",
       spolocnost: "Spoločnosť",
       email: "Email",
@@ -75,6 +102,7 @@ class Card extends React.Component {
         <div className="outcome">
           <ion-icon name="podium-outline"></ion-icon>
           <label htmlFor="outcome">
+            {/* create class with padding instead of space - padding-right: 10px; */}
             {text} {"  "}
           </label>
           <select name="outcome" onChange={this.handleDropdownChange}>
@@ -141,10 +169,10 @@ class Card extends React.Component {
                       : `${slova.skopirovane}`
                   }`
                 : `${
-                  this.context === "english"
-                    ? `${words.copy}`
-                    : `${slova.kopiruj}`
-                }`}
+                    this.context === "english"
+                      ? `${words.copy}`
+                      : `${slova.kopiruj}`
+                  }`}
             </button>
           </CopyToClipboard>
         </h4>
