@@ -9,43 +9,49 @@ export default class Background extends Component {
 
     this.state = {
       people: [],
-      language: "english"
+      language: "english",
     };
     this.handleRerender = this.handleRerender.bind(this);
   }
 
   async handleRerender() {
-    let data = await axios
-      .get(`https://randomuser.me/api/?results=9`)
+    await axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://randomuser.me/api/?results=9`
+      )
+      .then((response) => {
+        this.setState({
+          people: response.data.results,
+        });
+      })
       .catch((error) => {
-        alert("Error ========> Fetching Failed Please reload page", error);
-        
+        alert("Error ========> Fetching Failed", error);
+        window.location.reload();
       });
-
-    this.setState({
-      people: data.data.results,
-    });
   }
 
   async componentDidMount() {
-    let data = await axios
-      .get(`https://randomuser.me/api/?results=9`)
+    await axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://randomuser.me/api/?results=9`
+      )
+      .then((response) => {
+        this.setState({
+          people: response.data.results,
+        });
+      })
       .catch((error) => {
         alert("Error ========> Fetching Failed", error);
-        
+        window.location.reload();
       });
-
-    this.setState({
-      people: data.data.results,
-    });
   }
 
   onLanguageChange = (language) => {
     this.setState({ language });
   };
 
-
   render() {
+   
     const people = this.state.people.map((person) => {
       return (
         <Card
@@ -60,25 +66,28 @@ export default class Background extends Component {
 
     return (
       <>
-      <LanguageContext.Provider value={this.state.language}>
-        <div className='top'>
-        <span className='language'>
-         
-          <i
-            className="flag gb"
-            onClick={() => this.onLanguageChange("english")}
-          ></i>
-          <i
-            className="flag sk"
-            onClick={() => this.onLanguageChange("slovak")}
-          ></i>
-        </span>
-          <h1 className="title">XpressLeads</h1>
-          <div className="btn">
-    <button onClick={this.handleRerender}>{this.state.language === 'english' ? 'Get new leads' : 'Dalšie kontakty'}</button>
+        <LanguageContext.Provider value={this.state.language}>
+          <div className="top">
+            <span className="language">
+              <i
+                className="flag gb"
+                onClick={() => this.onLanguageChange("english")}
+              ></i>
+              <i
+                className="flag sk"
+                onClick={() => this.onLanguageChange("slovak")}
+              ></i>
+            </span>
+            <h1 className="title">XpressLeads</h1>
+            <div className="btn">
+              <button onClick={this.handleRerender}>
+                {this.state.language === "english"
+                  ? "Get new leads"
+                  : "Dalšie kontakty"}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="container">{people}</div>
+          <div className="container">{people}</div>
         </LanguageContext.Provider>
       </>
     );
