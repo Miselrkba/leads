@@ -41,6 +41,8 @@ class Card extends React.Component {
       success: "close successful",
       fail: "close unsuccessful",
       callback: "callback",
+      copy: "copy",
+      copied: "copied",
     };
 
     const slova = {
@@ -54,6 +56,8 @@ class Card extends React.Component {
       uzatvorene: "uzatvorené úspešne",
       neuzatvorene: "uzatvorené neúspešne",
       zavolat: "kontaktovať znova",
+      kopiruj: "kopíruj",
+      skopirovane: "skopírované",
     };
 
     return (
@@ -130,7 +134,17 @@ class Card extends React.Component {
           {this.context === "english" ? `${words.called}` : `${slova.zavolane}`}
           <CopyToClipboard text={this.props.phone}>
             <button className="copy-btn" onClick={this.handleCopy}>
-              {this.state.copied ? "copied" : "copy"}
+              {this.state.copied
+                ? `${
+                    this.context === "english"
+                      ? `${words.copied}`
+                      : `${slova.skopirovane}`
+                  }`
+                : `${
+                  this.context === "english"
+                    ? `${words.copy}`
+                    : `${slova.kopiruj}`
+                }`}
             </button>
           </CopyToClipboard>
         </h4>

@@ -75,7 +75,7 @@ export default class Background extends Component {
         </span>
           <h1 className="title">XpressLeads</h1>
           <div className="btn">
-            <button onClick={this.handleRerender}>Get new leads</button>
+    <button onClick={this.handleRerender}>{this.state.language === 'english' ? 'Get new leads' : 'Dalšie kontakty'}</button>
           </div>
         </div>
         <div className="container">{people}</div>
