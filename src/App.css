@@ -61,7 +61,8 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  margin: 5em
+  
 }
 
 .btn button {
@@ -99,9 +100,24 @@ ion-icon {
 }
 
 .top {
-  background: linear-gradient(45deg, black, transparent)
+  background: linear-gradient(45deg, black, transparent);
+  padding: 1em;
+  height: 10em;
 }
 
+.language{
+  color: crimson;
+  margin: 2em;
+  display: inline-block;
+}
+
+.checkbox{
+  margin-left: 1em;
+}
+
+.flag{
+  width: 1em;
+}
 /* ***************************Testing */
 
 .bigger {
@@ -116,7 +132,7 @@ ion-icon {
 }
 
 .title {
-  margin: 0;
+  margin: -2em;
   font-size: 2em;
   text-align: center;
   color: crimson;
