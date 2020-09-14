@@ -25,9 +25,22 @@ html {
   transition: 0.3s;
   border-radius: 0.4em;
   text-decoration: underline;
+  max-width: 469px;
 }
 .box:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.title {
+  margin: -2em;
+  font-size: 2em;
+  text-align: center;
+  color: crimson;
+}
+.title:hover {
+  color: darkkhaki;
+  transition: all 1s ease-in-out;
 }
 
 .success {
@@ -116,60 +129,36 @@ ion-icon {
   margin-left: 1em;
 }
 
-.flag{
-  width: 1em;
-}
-
 .outcome-label{
   margin-right: 0.5em;
 }
 
-/* ***************************Testing */
 
-.bigger {
-  color: rgb(8, 8, 184);
-  font-size: 15px;
-  transition: all 0.5s;
+/* ***Responsiveness */
+
+@media (max-width: 1162px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr
+  }
+}
+@media (max-width: 886px){
+  .container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr
+  }
 }
 
-.bigger:hover {
-  color: rgb(53, 59, 59);
-  font-size: 20px;
-}
-
-.title {
-  margin: -2em;
-  font-size: 2em;
-  text-align: center;
-  color: crimson;
-}
-.title:hover {
-  color: darkkhaki;
-  transition: all 1s ease-in-out;
-}
-
+/* ***** Animations */
 @keyframes fade-out {
   from {
     opacity: 100%;
   }
   to {
     opacity: 50%;
-  }
-}
-
-@keyframes flash {
-  from {
-    color: silver;
-    opacity: 0%;
-  }
-  to {
-    color: black;
-    opacity: 100%;
-  }
-}
-
-@keyframes transform {
-  100% {
-    transform: rotate(5deg);
   }
 }
