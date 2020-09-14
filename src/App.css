@@ -27,6 +27,7 @@ html {
   text-decoration: underline;
   max-width: 469px;
 }
+
 .box:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -102,6 +103,7 @@ html {
   background-color: lightgrey;
   color: black;
 }
+
 
 .link {
   color: #1f93ff;

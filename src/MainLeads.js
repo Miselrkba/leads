@@ -22,7 +22,7 @@ export default class Background extends Component {
         });
       })
       .catch((error) => {
-        alert("Error ========> Fetching Failed", error);
+        alert("Error ========> Fetching Failed - reloading page", error);
         window.location.reload();
       });
   }
