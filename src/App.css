@@ -119,6 +119,11 @@ ion-icon {
 .flag{
   width: 1em;
 }
+
+.outcome-label{
+  margin-right: 0.5em;
+}
+
 /* ***************************Testing */
 
 .bigger {

@@ -4,17 +4,13 @@ import Card from "./Card";
 import LanguageContext from "./context/LanguageContext";
 
 export default class Background extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    people: [],
+    language: "english",
+  };
 
-    this.state = {
-      people: [],
-      language: "english",
-    };
-    this.handleRerender = this.getLeadsButtonClick.bind(this);
-    this.getLeadsData = this.getLeadsData.bind(this);
-  }
 
+  //fetch data from API and push into state
   async getLeadsData() {
     await axios
       .get(
@@ -31,19 +27,20 @@ export default class Background extends Component {
       });
   }
 
-  getLeadsButtonClick = () => {
-    this.getLeadsData();
-  }
-
   componentDidMount() {
     this.getLeadsData();
   }
+
+  getLeadsButtonClick = () => {
+    this.getLeadsData();
+  };
 
   onLanguageChange = (language) => {
     this.setState({ language });
   };
 
   render() {
+    //map over state and render cards
     const people = this.state.people.map((person) => {
       return (
         <Card
@@ -56,11 +53,9 @@ export default class Background extends Component {
       );
     });
 
-    // let totalCount = people.length;
-    // let successCount = people.drowndownlist.state.success.legth;
-
     return (
       <>
+      {/* wrap all components in Context for language change Sk/En */}
         <LanguageContext.Provider value={this.state.language}>
           <div className="top">
             <span className="language">
@@ -73,6 +68,7 @@ export default class Background extends Component {
                 onClick={() => this.onLanguageChange("slovak")}
               ></i>
             </span>
+            {/* title and get bew leads button */}
             <h1 className="title">XpressLeads</h1>
             <div className="btn">
               <button onClick={this.getLeadsButtonClick}>

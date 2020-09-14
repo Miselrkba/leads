@@ -1,6 +1,8 @@
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import LanguageContext from "./context/LanguageContext";
+import { words, slova } from "./components/Translations";
+import Outcome from "./Outcome";
 
 class Card extends React.Component {
   static contextType = LanguageContext;
@@ -19,73 +21,22 @@ class Card extends React.Component {
     }, 1000);
   };
 
-  handleDropdownChange = (e) => {
+  handleDropdownChange = (selectValue) => {
     this.setState({
-      selectValue: e.target.value,
+      selectValue: selectValue,
     });
-
-    this.recalculateCounts();
   };
 
-  recalculateCounts() {
-    // spocita kazdu categoriu
-    // ulozi to do variables (success....)
-    // call this function on every state change
-    // spocital vsetky actionTalen = success . count()
-    // array DropdownActionsTakenState
-    //  actionsTaken = [];
-    //  actionsTaken.forEach(() => {
-    // lblOpen = card.count(); //14
-    // lblNotOpen =
-    //   lblSuccess = selectValue.success.count(); // on click, add +1 to success
-    //   lblfail = selectValue.fail.count();
-    //  })
-  }
-
   render() {
-    //put all const into separate file, and import
     const actionStates = {
       success: `success`,
       fail: `fail`,
       callback: `callback`,
     };
 
-    const success = this.state.selectValue === actionStates.success; // "success"; // remove magic strings e.g. statesValues.success
+    const success = this.state.selectValue === actionStates.success;
     const fail = this.state.selectValue === actionStates.fail;
     const callback = this.state.selectValue === actionStates.callback;
-
-    const text = this.context === "english" ? "Outcome" : "Výsledok";
-    const words = {
-      // create i18n files (e.g. ..app/shared/translations/words.en.const.json)
-      name: "Name",
-      company: "Company",
-      email: "Email",
-      emailed: "emailed",
-      called: "called",
-      number: "Number",
-      open: "open",
-      success: "close successful",
-      fail: "close unsuccessful",
-      callback: "callback",
-      copy: "copy",
-      copied: "copied"
-    };
-
-    const slova = {
-      // create i18n files (e.g. ..app/shared/translations/words.sk.const.json)
-      meno: "Meno",
-      spolocnost: "Spoločnosť",
-      email: "Email",
-      emailPoslany: "email poslaný",
-      zavolane: "zavolané",
-      cislo: "Tel. číslo",
-      otvorene: "otvorené",
-      uzatvorene: "uzatvorené úspešne",
-      neuzatvorene: "uzatvorené neúspešne",
-      zavolat: "kontaktovať znova",
-      kopiruj: "kopíruj",
-      skopirovane: "skopírované",
-    };
 
     return (
       <div
@@ -99,36 +50,10 @@ class Card extends React.Component {
             : "box"
         }
       >
-        <div className="outcome">
-          <ion-icon name="podium-outline"></ion-icon>
-          <label htmlFor="outcome">
-            {/* create class with padding instead of space - padding-right: 10px; */}
-            {text} {"  "}
-          </label>
-          <select name="outcome" onChange={this.handleDropdownChange}>
-            <option value="open">
-              {this.context === "english"
-                ? `${words.open}`
-                : `${slova.otvorene}`}
-            </option>
-            <option value="success">
-              {this.context === "english"
-                ? `${words.success}`
-                : `${slova.uzatvorene}`}
-            </option>
-            <option value="fail">
-              {this.context === "english"
-                ? `${words.fail}`
-                : `${slova.neuzatvorene}`}
-            </option>
-            <option value="callback">
-              {this.context === "english"
-                ? `${words.callback}`
-                : `${slova.zavolat}`}{" "}
-            </option>
-          </select>
-        </div>
-
+        {/* render outcome box */}
+        <Outcome selectValue={this.state.selectValue} handleDropdownChange={this.handleDropdownChange}/>
+        
+        {/* box properties - name company email and number  */}
         <h4>
           <ion-icon name="people-circle-outline"></ion-icon>
           {this.context === "english" ? `${words.name}` : `${slova.meno}`}:{" "}

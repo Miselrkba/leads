@@ -1,10 +1,10 @@
 import React from "react";
 
 import "./App.css";
-import Background from "./Background";
+import MainLeads from "./MainLeads";
 
 function App() {
-  return <Background />;
+  return <MainLeads />;
 }
 
 export default App;
