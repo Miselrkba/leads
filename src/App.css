@@ -168,6 +168,14 @@ ion-icon {
 }
 
 /* ***** Animations */
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
 @keyframes fade-out {
   from {
     opacity: 100%;
