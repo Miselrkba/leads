@@ -1,7 +1,7 @@
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import LanguageContext from "./context/LanguageContext";
-import { words, slova } from "./components/Translations";
+import LanguageContext from "../context/LanguageContext";
+import { words, slova } from "./Translations";
 import Outcome from "./Outcome";
 
 class Card extends React.Component {

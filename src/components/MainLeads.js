@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Card from "./Card";
-import LanguageContext from "./context/LanguageContext";
+import LanguageContext from "../context/LanguageContext";
 
 export default class Background extends Component {
   state = {

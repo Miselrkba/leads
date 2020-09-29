@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import LanguageContext from "./context/LanguageContext";
-import { words, slova } from "./components/Translations";
+import LanguageContext from "../context/LanguageContext";
+import { words, slova } from "./Translations";
 
 export default class Outcome extends Component {
   static contextType = LanguageContext;

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./App.css";
-import MainLeads from "./MainLeads";
+import MainLeads from "./components/MainLeads";
 
 function App() {
   return <MainLeads />;
