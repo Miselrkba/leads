@@ -1,48 +1,3 @@
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 50%;
-  }
-}
-@keyframes fade {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 50%;
-  }
-}
-
-/* success / fail animations without prefix */
-
-.success {
-  background-color: gold;
-  -webkit-animation-name: fade;
-          animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-}
-
-.fail {
-  background-color: red;
-  -webkit-animation-name: fade;
-          animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-timing-function: ease-out;
-          animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-}
-
-/* *** main css */
 html {
   margin: 0;
   padding: 0;
@@ -89,7 +44,31 @@ html {
   transition: all 1s ease-in-out;
 }
 
+/* success / fail animations without prefix */
 
+.success {
+  background-color: gold;
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.fail {
+  background-color: red;
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
 
 
 .callback {
@@ -188,3 +167,20 @@ ion-icon {
   }
 }
 
+/* ***** Animations */
+@-webkit-keyframes fade {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 50%;
+  }
+}

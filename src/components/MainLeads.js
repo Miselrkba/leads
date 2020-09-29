@@ -23,6 +23,7 @@ export default class Background extends Component {
       })
       .catch((error) => {
         alert("Error ========> Fetching Failed - reloading page", error);
+        console.log(error);
         window.location.reload();
       });
   }

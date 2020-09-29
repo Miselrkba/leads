@@ -40,7 +40,15 @@ class Card extends React.Component {
 
     return (
       <div
-        className='box success'
+        className={
+          success
+            ? "box success"
+            : fail
+            ? "box fail"
+            : callback
+            ? "box callback"
+            : "box"
+        }
       >
         {/* render outcome box */}
         <Outcome selectValue={this.state.selectValue} handleDropdownChange={this.handleDropdownChange}/>
