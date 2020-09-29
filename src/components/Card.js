@@ -28,15 +28,15 @@ class Card extends React.Component {
   };
 
   render() {
-    const actionStates = {
-      success: `success`,
-      fail: `fail`,
-      callback: `callback`,
-    };
+    // const actionStates = {
+    //   success: `success`,
+    //   fail: `fail`,
+    //   callback: `callback`,
+    // };
 
-    const success = this.state.selectValue === actionStates.success;
-    const fail = this.state.selectValue === actionStates.fail;
-    const callback = this.state.selectValue === actionStates.callback;
+    // const success = this.state.selectValue === actionStates.success;
+    // const fail = this.state.selectValue === actionStates.fail;
+    // const callback = this.state.selectValue === actionStates.callback;
 
     return (
       <div
