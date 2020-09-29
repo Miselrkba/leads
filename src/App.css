@@ -1,3 +1,23 @@
+/* ***** Animations */
+@-webkit-keyframes fade {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 50%;
+  }
+}
+
+
+/* *** main css */
 html {
   margin: 0;
   padding: 0;
@@ -48,8 +68,8 @@ html {
 
 .success {
   background-color: gold;
-  -webkit-animation-name: fade-out;
-          animation-name: fade-out;
+  -webkit-animation-name: fade;
+          animation-name: fade;
   -webkit-animation-duration: 1.5s;
           animation-duration: 1.5s;
   -webkit-animation-timing-function: ease-out;
@@ -60,8 +80,8 @@ html {
 
 .fail {
   background-color: red;
-  -webkit-animation-name: fade-out;
-          animation-name: fade-out;
+  -webkit-animation-name: fade;
+          animation-name: fade;
   -webkit-animation-duration: 1.5s;
           animation-duration: 1.5s;
   -webkit-animation-timing-function: ease-out;
@@ -167,20 +187,3 @@ ion-icon {
   }
 }
 
-/* ***** Animations */
-@-webkit-keyframes fade-out {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 50%;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 50%;
-  }
-}
