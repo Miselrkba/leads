@@ -14,7 +14,7 @@ export default class Background extends Component {
   async getLeadsData() {
     await axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://randomuser.me/api/?results=9`
+        `https://thingproxy.freeboard.io/fetch/https://randomuser.me/api/?results=9`
       )
       .then((response) => {
         this.setState({
