@@ -14,7 +14,7 @@ export default class Background extends Component {
   async getLeadsData() {
     await axios
       .get(
-        `https://mysterious-inlet-41182.herokuapp.com/https://randomuser.me/api/?results=9`
+        `https://randomuser.me/api/?results=9`
       )
       .then((response) => {
         this.setState({
