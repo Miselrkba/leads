@@ -59,9 +59,6 @@ export default class Background extends Component {
 
     return (
       <>
-        {/* {this.state.isLoading ? (
-          <CircularUnderLoad />
-        ) : ( */}
           <LanguageContext.Provider value={this.state.language}>
           <div className="top">
             <span className="language">
@@ -85,9 +82,10 @@ export default class Background extends Component {
             </div>
           </div>
           {this.state.isLoading ? (
+            <div className='loader'>
           <CircularUnderLoad />
+          </div>
         ) : (  <div className="container">{people}</div>)}
-         
         </LanguageContext.Provider>
                
       </>
