@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import Card from "./Card";
 import LanguageContext from "../context/LanguageContext";
+import CircularUnderLoad from '../components/Loader'
 
 export default class Background extends Component {
   state = {
     people: [],
     language: "english",
+    isLoading: false,
   };
-
 
   //fetch data from API and push into state
   async getLeadsData() {
@@ -19,6 +20,7 @@ export default class Background extends Component {
       .then((response) => {
         this.setState({
           people: response.data.results,
+          isLoading: false
         });
       })
       .catch((error) => {
@@ -29,6 +31,7 @@ export default class Background extends Component {
   }
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     this.getLeadsData();
   }
 
@@ -56,8 +59,10 @@ export default class Background extends Component {
 
     return (
       <>
-      {/* wrap all components in Context for language change Sk/En */}
-        <LanguageContext.Provider value={this.state.language}>
+        {/* {this.state.isLoading ? (
+          <CircularUnderLoad />
+        ) : ( */}
+          <LanguageContext.Provider value={this.state.language}>
           <div className="top">
             <span className="language">
               <i
@@ -79,8 +84,12 @@ export default class Background extends Component {
               </button>
             </div>
           </div>
-          <div className="container">{people}</div>
+          {this.state.isLoading ? (
+          <CircularUnderLoad />
+        ) : (  <div className="container">{people}</div>)}
+         
         </LanguageContext.Provider>
+               
       </>
     );
   }
