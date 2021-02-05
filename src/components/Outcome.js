@@ -6,43 +6,34 @@ export default class Outcome extends Component {
   static contextType = LanguageContext;
 
   handleDropdownChange = (e) => {
-    this.props.handleDropdownChange(e.target.value);
+    const { handleDropdownChange } = this.props;
+    handleDropdownChange(e.target.value);
   };
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div className="outcome">
-          <ion-icon name="podium-outline"></ion-icon>
+          <ion-icon name="podium-outline" />
           <label className="outcome-label" htmlFor="outcome">
-            {this.context === 'english'
-              ? `${words.outcome}`
-              : `${slova.vysledok}`}
+            {this.context === 'english' ? `${words.outcome}` : `${slova.vysledok}`}
           </label>
           <select name="outcome" onChange={this.handleDropdownChange}>
             <option value="open">
-              {this.context === 'english'
-                ? `${words.open}`
-                : `${slova.otvorene}`}
+              {this.context === 'english' ? `${words.open}` : `${slova.otvorene}`}
             </option>
             <option value="success">
-              {this.context === 'english'
-                ? `${words.success}`
-                : `${slova.uzatvorene}`}
+              {this.context === 'english' ? `${words.success}` : `${slova.uzatvorene}`}
             </option>
             <option value="fail">
-              {this.context === 'english'
-                ? `${words.fail}`
-                : `${slova.neuzatvorene}`}
+              {this.context === 'english' ? `${words.fail}` : `${slova.neuzatvorene}`}
             </option>
             <option value="callback">
-              {this.context === 'english'
-                ? `${words.callback}`
-                : `${slova.zavolat}`}{' '}
+              {this.context === 'english' ? `${words.callback}` : `${slova.zavolat}`}{' '}
             </option>
           </select>
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }
