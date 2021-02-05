@@ -4,6 +4,14 @@ html {
   background-color: #f2f2f2;
 }
 
+h4 {
+  font-family: arial;
+}
+
+body {
+  font-family: arial;
+}
+
 .container {
   display: -ms-grid;
   display: grid;
@@ -103,7 +111,6 @@ html {
   padding: 0.4em;
   border-radius: 0.5em;
   cursor: pointer;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .btn button:hover {

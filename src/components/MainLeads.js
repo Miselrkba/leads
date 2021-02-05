@@ -57,7 +57,7 @@ export default class Background extends Component {
     return (
       <>
         <LanguageContext.Provider value={language}>
-          <div className="top">
+          <div className="top" id="body-container">
             <span className="language">
               <i
                 role="button"
@@ -80,7 +80,7 @@ export default class Background extends Component {
             <h1 className="title">XpressLeads</h1>
             <div className="btn">
               <button type="button" onClick={this.getLeadsButtonClick}>
-                {language === 'english' ? 'Get new leads' : 'Dalšie kontakty'}
+                {language === 'english' ? 'Get new leads' : 'Ďalšie kontakty'}
               </button>
             </div>
           </div>
