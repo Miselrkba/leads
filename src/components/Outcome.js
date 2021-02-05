@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import LanguageContext from "../context/LanguageContext";
-import { words, slova } from "./Translations";
+import React, { Component } from 'react';
+import LanguageContext from '../context/LanguageContext';
+import { words, slova } from './Translations';
 
 export default class Outcome extends Component {
   static contextType = LanguageContext;
@@ -15,30 +15,30 @@ export default class Outcome extends Component {
         <div className="outcome">
           <ion-icon name="podium-outline"></ion-icon>
           <label className="outcome-label" htmlFor="outcome">
-            {this.context === "english"
+            {this.context === 'english'
               ? `${words.outcome}`
               : `${slova.vysledok}`}
           </label>
           <select name="outcome" onChange={this.handleDropdownChange}>
             <option value="open">
-              {this.context === "english"
+              {this.context === 'english'
                 ? `${words.open}`
                 : `${slova.otvorene}`}
             </option>
             <option value="success">
-              {this.context === "english"
+              {this.context === 'english'
                 ? `${words.success}`
                 : `${slova.uzatvorene}`}
             </option>
             <option value="fail">
-              {this.context === "english"
+              {this.context === 'english'
                 ? `${words.fail}`
                 : `${slova.neuzatvorene}`}
             </option>
             <option value="callback">
-              {this.context === "english"
+              {this.context === 'english'
                 ? `${words.callback}`
-                : `${slova.zavolat}`}{" "}
+                : `${slova.zavolat}`}{' '}
             </option>
           </select>
         </div>

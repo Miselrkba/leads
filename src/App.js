@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import "./App.css";
-import MainLeads from "./components/MainLeads";
+import './App.css';
+import MainLeads from './components/MainLeads';
 
-function App() {
+const App = () => {
   return <MainLeads />;
-}
+};
 
 export default App;

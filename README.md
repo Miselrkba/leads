@@ -6,7 +6,11 @@ Its color coded for close successful, unsucessfull and callback.
 This way you have important info readily available to you and can work quickly and efficiently.
 
 
-Download the code run npm install in the same directory.
+
+
+```yarn```      -  to install npm packages.
+
+```yarn start```  - to run app.
 
 
 Michael

@@ -1,15 +1,15 @@
-import React from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import LanguageContext from "../context/LanguageContext";
-import { words, slova } from "./Translations";
-import Outcome from "./Outcome";
+import React from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import LanguageContext from '../context/LanguageContext';
+import { words, slova } from './Translations';
+import Outcome from './Outcome';
 
 class Card extends React.Component {
   static contextType = LanguageContext;
 
   state = {
     copied: false,
-    selectValue: "",
+    selectValue: '',
   };
 
   handleCopy = () => {
@@ -42,59 +42,62 @@ class Card extends React.Component {
       <div
         className={
           success
-            ? "box success"
+            ? 'box success'
             : fail
-            ? "box fail"
+            ? 'box fail'
             : callback
-            ? "box callback"
-            : "box"
+            ? 'box callback'
+            : 'box'
         }
       >
         {/* render outcome box */}
-        <Outcome selectValue={this.state.selectValue} handleDropdownChange={this.handleDropdownChange}/>
-        
+        <Outcome
+          selectValue={this.state.selectValue}
+          handleDropdownChange={this.handleDropdownChange}
+        />
+
         {/* box properties - name company email and number  */}
         <h4>
           <ion-icon name="people-circle-outline"></ion-icon>
-          {this.context === "english" ? `${words.name}` : `${slova.meno}`}:{" "}
+          {this.context === 'english' ? `${words.name}` : `${slova.meno}`}:{' '}
           {this.props.name}
         </h4>
         <h4>
           <ion-icon name="business-outline"></ion-icon>
-          {this.context === "english"
+          {this.context === 'english'
             ? `${words.company}`
             : `${slova.spolocnost}`}
           : {this.props.company}
         </h4>
         <h4>
           <ion-icon name="mail-outline"></ion-icon>
-          Email: {"  "}
+          Email: {'  '}
           <a className="link" href={`mailto:${this.props.email}`}>
             {this.props.email}
           </a>
           <input className="checkbox" type="checkbox" />
-          {this.context === "english"
+          {this.context === 'english'
             ? `${words.emailed}`
             : `${slova.emailPoslany}`}
         </h4>
 
         <h4 className="number">
           <ion-icon name="call-outline"></ion-icon>
-          {this.context === "english"
+          {this.context === 'english'
             ? `${words.number}`
             : `${slova.cislo}`}: {this.props.phone}
           <input className="checkbox" type="checkbox" />
-          {this.context === "english" ? `${words.called}` : `${slova.zavolane}`}
+          {this.context === 'english' ? `${words.called}` : `${slova.zavolane}`}
           <CopyToClipboard text={this.props.phone}>
             <button className="copy-btn" onClick={this.handleCopy}>
               {this.state.copied
                 ? `${
-                    this.context === "english"
+                    this.context === 'english'
                       ? `${words.copied}`
                       : `${slova.skopirovane}`
                   }`
                 : `${
-                    this.context === "english"
+                    this.context === 'english'
                       ? `${words.copy}`
                       : `${slova.kopiruj}`
                   }`}
