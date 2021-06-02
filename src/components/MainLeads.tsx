@@ -4,7 +4,7 @@ import Card from './Card';
 import LanguageContext from '../context/LanguageContext';
 import CircularUnderLoad from './Loader';
 
-export default class Background extends Component {
+export default class Background extends Component<any> {
   state = {
     people: [],
     language: 'english',
@@ -19,7 +19,9 @@ export default class Background extends Component {
   // fetch data from API and push into state
   async getLeadsData() {
     await axios
-      .get(`https://mysterious-inlet-41182.herokuapp.com/https://randomuser.me/api/?results=9`)
+      .get(
+        `https://mysterious-inlet-41182.herokuapp.com/https://randomuser.me/api/?results=9`
+      )
       .then((response) => {
         this.setState({
           people: response.data.results,
@@ -62,7 +64,7 @@ export default class Background extends Component {
               <i
                 role="button"
                 aria-label="gb"
-                tabIndex="-1"
+                tabIndex={-1}
                 className="flag gb"
                 onClick={() => this.onLanguageChange('english')}
                 onKeyDown={() => this.onLanguageChange('english')}
@@ -70,7 +72,7 @@ export default class Background extends Component {
               <i
                 role="button"
                 aria-label="sk"
-                tabIndex="-2"
+                tabIndex={-2}
                 className="flag sk"
                 onClick={() => this.onLanguageChange('slovak')}
                 onKeyDown={() => this.onLanguageChange('english')}

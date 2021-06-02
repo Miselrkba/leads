@@ -4,7 +4,17 @@ import LanguageContext from '../context/LanguageContext';
 import { words, slova } from './Translations';
 import Outcome from './Outcome';
 
-class Card extends React.Component {
+type CardState = { copied: boolean; selectValue: string };
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ion-icon': { name: string };
+    }
+  }
+}
+
+class Card extends React.Component<any, CardState> {
   static contextType = LanguageContext;
 
   state = {
@@ -21,7 +31,7 @@ class Card extends React.Component {
     }, 1000);
   };
 
-  handleDropdownChange = (selectValue) => {
+  handleDropdownChange = (selectValue: string) => {
     this.setState({
       selectValue,
     });
@@ -54,16 +64,23 @@ class Card extends React.Component {
     return (
       <div className={boxClassNames}>
         {/* render outcome box */}
-        <Outcome selectValue={selectValue} handleDropdownChange={this.handleDropdownChange} />
+        <Outcome
+          selectValue={selectValue}
+          handleDropdownChange={this.handleDropdownChange}
+        />
 
         {/* box properties - name company email and number  */}
         <h4>
           <ion-icon name="people-circle-outline" />
-          {this.context === 'english' ? `${words.name}` : `${slova.meno}`}: {name}
+          {this.context === 'english' ? `${words.name}` : `${slova.meno}`}:{' '}
+          {name}
         </h4>
         <h4>
           <ion-icon name="business-outline" />
-          {this.context === 'english' ? `${words.company}` : `${slova.spolocnost}`}: {company}
+          {this.context === 'english'
+            ? `${words.company}`
+            : `${slova.spolocnost}`}
+          : {company}
         </h4>
         <h4>
           <ion-icon name="mail-outline" />
@@ -72,18 +89,34 @@ class Card extends React.Component {
             {email}
           </a>
           <input className="checkbox" type="checkbox" />
-          {this.context === 'english' ? `${words.emailed}` : `${slova.emailPoslany}`}
+          {this.context === 'english'
+            ? `${words.emailed}`
+            : `${slova.emailPoslany}`}
         </h4>
         <h4 className="number">
           <ion-icon name="call-outline" />
-          {this.context === 'english' ? `${words.number}` : `${slova.cislo}`}: {phone}
+          {this.context === 'english'
+            ? `${words.number}`
+            : `${slova.cislo}`}: {phone}
           <input className="checkbox" type="checkbox" />
           {this.context === 'english' ? `${words.called}` : `${slova.zavolane}`}
           <CopyToClipboard text={phone}>
-            <button type="button" className="copy-btn" onClick={this.handleCopy}>
+            <button
+              type="button"
+              className="copy-btn"
+              onClick={this.handleCopy}
+            >
               {copied
-                ? `${this.context === 'english' ? `${words.copied}` : `${slova.skopirovane}`}`
-                : `${this.context === 'english' ? `${words.copy}` : `${slova.kopiruj}`}`}
+                ? `${
+                    this.context === 'english'
+                      ? `${words.copied}`
+                      : `${slova.skopirovane}`
+                  }`
+                : `${
+                    this.context === 'english'
+                      ? `${words.copy}`
+                      : `${slova.kopiruj}`
+                  }`}
             </button>
           </CopyToClipboard>
         </h4>
