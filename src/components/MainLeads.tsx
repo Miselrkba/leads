@@ -38,15 +38,28 @@ export default class Background extends Component<any> {
     this.getLeadsData();
   };
 
-  onLanguageChange = (language) => {
+  onLanguageChange = (language: string) => {
     this.setState({ language });
   };
 
   render() {
     const { people, language, isLoading } = this.state;
 
+    type People = {
+      cell: string;
+      name: {
+        first: string;
+        last: string;
+      };
+      email: string;
+      phone: number;
+      location: {
+        city: string;
+      };
+    };
+
     // map over state and render cards
-    const renderPeople = people.map((person) => (
+    const renderPeople = people.map((person: People) => (
       <Card
         key={person.cell}
         name={`${person.name.first}  ${person.name.last}`}
