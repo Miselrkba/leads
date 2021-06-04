@@ -68,7 +68,6 @@ class Card extends React.Component<any, CardState> {
           selectValue={selectValue}
           handleDropdownChange={this.handleDropdownChange}
         />
-
         {/* box properties - name company email and number  */}
         <h4>
           <ion-icon name="people-circle-outline" />
@@ -86,7 +85,7 @@ class Card extends React.Component<any, CardState> {
           <ion-icon name="mail-outline" />
           Email: {'  '}
           <a className="link" href={`mailto:${email}`}>
-            {email}
+            <span style={{ fontSize: '1.05em' }}>{email}</span>
           </a>
           <input className="checkbox" type="checkbox" />
           {this.context === 'english'
