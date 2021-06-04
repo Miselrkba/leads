@@ -5,7 +5,7 @@ import { words, slova } from './Translations';
 export default class Outcome extends Component<any> {
   static contextType = LanguageContext;
 
-  handleDropdownChange = (e) => {
+  handleDropdownChange = (e: any) => {
     const { handleDropdownChange } = this.props;
     handleDropdownChange(e.target.value);
   };
