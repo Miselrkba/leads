@@ -1,6 +1,6 @@
 # ExpressLeads
 
-This project is a productivity tool for Sales people build with TypesCript and React. It fetches Company data from API. You get Name,
+This project is a productivity tool for Sales people built with TypesCript and React. It fetches Company data from API. You get Name,
 Company, Email and Number. Emailed and Called checkboxes.
 
 Its color coded for close successful, unsucessfull and callback.
